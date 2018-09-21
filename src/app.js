@@ -1,9 +1,12 @@
 
 console.log('App.js is running');
 
+ 
+
 var object = {
   title : 'Indecision App',
-  subtitle: 'Ayeeeeee'
+  subtitle: 'woooooo',
+  options: ['One', 'Two']
 };
 
 
@@ -12,7 +15,7 @@ var object = {
 
 var template = (
   <div>
-    <h1> {object.title} </h1>
+    <h1> {object.title}  </h1>
     <p> {object.subtitle} </p>
     <ol>
       <li> List </li>
@@ -22,23 +25,25 @@ var template = (
 );
 
 
-
-
-/*var userName = 'Mike';
-var userAge = 27;
-var userLocation = 'Los Angeles';
-
 var user ={
-  name: 'Kevin',
-  age: '26',
+  name: "Kevin",
+  age: '17',
   location: 'Los Angeles'
 };
 
-var template2 = (
+
+function getLocation(location){
+  if(location){
+    return <p> Location :{location} </p>;
+  } 
+}
+
+
+/*var template2 = (
   <div>
-    <h1> {user.name} </h1>
-    <p> Age: {user.age} </p>
-    <p> Location: {user.location}</p>
+    <h1> {user.name ? user.name : 'Anonymous'} </h1>
+    {user.age >= 18 && <p> Age: {user.age} </p>}
+    {getLocation(user.location)}
   </div>
 );*/
 
@@ -50,4 +55,4 @@ var template2 = (
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(object, appRoot);
