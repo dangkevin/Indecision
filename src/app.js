@@ -1,8 +1,3 @@
-
-console.log('App.js is running');
-
- 
-
 var object = {
   title : 'Indecision App',
   subtitle: 'woooooo',
@@ -16,7 +11,8 @@ var object = {
 var template = (
   <div>
     <h1> {object.title}  </h1>
-    <p> {object.subtitle} </p>
+    {object.subtitle && <p> {object.subtitle} </p>}
+    <p>{object.options.length > 0 ? "Here are your options" : 'No options'} </p>
     <ol>
       <li> List </li>
       <li> List2</li>
@@ -55,4 +51,4 @@ function getLocation(location){
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(object, appRoot);
+ReactDOM.render(template, appRoot);

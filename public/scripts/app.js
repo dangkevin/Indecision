@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('App.js is running');
-
 var object = {
   title: 'Indecision App',
   subtitle: 'woooooo',
@@ -18,11 +16,17 @@ var template = React.createElement(
     object.title,
     '  '
   ),
-  React.createElement(
+  object.subtitle && React.createElement(
     'p',
     null,
     ' ',
     object.subtitle,
+    ' '
+  ),
+  React.createElement(
+    'p',
+    null,
+    object.options.length > 0 ? "Here are your options" : 'No options',
     ' '
   ),
   React.createElement(
@@ -69,4 +73,4 @@ function getLocation(location) {
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(object, appRoot);
+ReactDOM.render(template, appRoot);
