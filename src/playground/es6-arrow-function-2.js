@@ -19,14 +19,18 @@ const user = {
     name : 'Andrew',
     cities: ['Phill', 'New York', 'Dublin'],
     printPlacesLived(){
-    console.log(this.name);     
-    this.cities.forEach((city) => {
-        console.log(this.name + ' has lived in' + city);
-    });
+    return this.cities.map((city) => this.name + ' has lived in ' + city);
     }
 };
-user.printPlacesLived();
+console.log(user.printPlacesLived());
 
+const multiplier = {
+    //numbers
+    numbers:[10,20,30],
+    multiplyBy: 3,
+    multiple(){
+        return this.numbers.map((number) => number * this.multipleBy);
+}
 
 //ES5 : 
 
