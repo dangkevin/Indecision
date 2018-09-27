@@ -4,10 +4,6 @@ var object = {
   options: ['One', 'Two']
 };
 
-
-
-
-
 var template = (
   <div>
     <h1> {object.title}  </h1>
@@ -43,6 +39,35 @@ function getLocation(location){
   </div>
 );*/
 
+let count = 0;
+
+const addOne = () => {
+  console.log("poop");
+};
+
+const minusOne = () => {
+  console.log("Minus one");
+}
+
+const reset = () => {
+  console.log("Reset");
+}
+
+const templateTwo = (
+  <div>
+    <h1>Count :{count} </h1>
+    <button onClick = {addOne}> +1 </button>
+    <button onClick = {minusOne}>-1</button>
+    <button onClick = {reset}>Reset</button>
+  </div>
+
+);
+
+
+//Challenge
+//Make Button with Text "-1" + add function - log minusOne
+//Reset Button - add function - log - reset
+
 
 
 
@@ -51,4 +76,4 @@ function getLocation(location){
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

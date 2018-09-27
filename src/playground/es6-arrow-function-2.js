@@ -7,13 +7,6 @@ const add = (a, b) => {
 //Can't access the arguments 
 
 // this keyword - no longer bound
-const user = {
-    name : 'Andrew',
-    cities: ['Phill', 'New York', 'Dublin'],
-    printPlacesLived: function (){
-    console.log(this.name);      
-    }
-};
 
 const user = {
     name : 'Andrew',
@@ -28,9 +21,10 @@ const multiplier = {
     //numbers
     numbers:[10,20,30],
     multiplyBy: 3,
-    multiple(){
-        return this.numbers.map((number) => number * this.multipleBy);
-}
-
+    multiply(){
+        return this.numbers.map((number) => number * this.multiplyBy);
+        
+    }
+};
 //ES5 : 
-
+console.log(multiplier.multiply());
