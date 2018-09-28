@@ -3,9 +3,18 @@
 var object = {
   title: 'Indecision App',
   subtitle: 'woooooo',
-  options: ['One', 'Two']
+  options: []
 };
 
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault();
+  var option = e.target.elements.option.value;
+
+  if (option) {
+    object.options.push(option);
+    e.target.elements.option.value = ' ';
+  }
+};
 var template = React.createElement(
   'div',
   null,
@@ -30,6 +39,11 @@ var template = React.createElement(
     ' '
   ),
   React.createElement(
+    'p',
+    null,
+    app.options.length
+  ),
+  React.createElement(
     'ol',
     null,
     React.createElement(
@@ -42,81 +56,19 @@ var template = React.createElement(
       null,
       ' List2'
     )
-  )
-);
-
-var user = {
-  name: "Kevin",
-  age: '17',
-  location: 'Los Angeles'
-};
-
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
+  ),
+  React.createElement(
+    'form',
+    { onSubmit: onFormSubmit },
+    React.createElement('input', { type: 'text', name: 'option' }),
+    React.createElement(
+      'button',
       null,
-      ' Location :',
-      location,
-      ' '
-    );
-  }
-}
-
-/*var template2 = (
-  <div>
-    <h1> {user.name ? user.name : 'Anonymous'} </h1>
-    {user.age >= 18 && <p> Age: {user.age} </p>}
-    {getLocation(user.location)}
-  </div>
-);*/
-
-var count = 0;
-
-var addOne = function addOne() {
-  console.log("poop");
-};
-
-var minusOne = function minusOne() {
-  console.log("Minus one");
-};
-
-var reset = function reset() {
-  console.log("Reset");
-};
-
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    'Count :',
-    count,
-    ' '
-  ),
-  React.createElement(
-    'button',
-    { onClick: addOne },
-    ' +1 '
-  ),
-  React.createElement(
-    'button',
-    { onClick: minusOne },
-    '-1'
-  ),
-  React.createElement(
-    'button',
-    { onClick: reset },
-    'Reset'
+      'Add Option'
+    )
   )
 );
-
-//Challenge
-//Make Button with Text "-1" + add function - log minusOne
-//Reset Button - add function - log - reset
-
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
