@@ -11,30 +11,48 @@ const onFormSubmit = (e) =>{
   if(option){
     object.options.push(option);
     e.target.elements.option.value = ' ';
+    render();
   }
 };
-const template = (
-  <div>
-    <h1> {object.title}  </h1>
-    {object.subtitle && <p> {object.subtitle} </p>}
-    <p>{object.options.length > 0 ? "Here are your options" : 'No options'} </p>
-    <p>{app.options.length}</p>
-    <ol>
-      <li> List </li>
-      <li> List2</li>
-    </ol>
-    <form onSubmit = {onFormSubmit}>
-     <input type = "text" name = "option"/>
-     <button>Add Option</button>
-     </form>
-  </div>
-);
+
+const onRemoveAll = () => {
+  object.options  = [];
+  render();
+};
+const appRoot = document.getElementById('app');
+
+const numbers = [55, 101, 1000];
+
+const render = () => {
+  const template = (
+    <div>
+      <h1> {object.title}  </h1>
+      {object.subtitle && <p> {object.subtitle} </p>}
+      <p>{object.options.length > 0 ? "Here are your options" : 'No options'} </p>
+      <p>{object.options.length}</p>
+      <button onClick = {onRemoveAll}> Remove All </button>
+      {
+        numbers.map((number) => {
+          return <p key = {number}> Number : {number} </p>;
+        })
+      }
+      <ol>
+        {
+        object.options.map((option) =>{
+          return <li key = {option}>{option}</li>;
+          })
+        }
+      </ol>
+      <form onSubmit = {onFormSubmit}>
+      <input type = "text" name = "option"/>
+      <button>Add Option</button>
+      </form>
+    </div>
+  );
+  ReactDOM.render(template, appRoot);
+};
+
+render();
 
 
 
-
-
-
-var appRoot = document.getElementById('app');
-
-ReactDOM.render(template,appRoot);
