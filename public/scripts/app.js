@@ -23,12 +23,12 @@ var onRemoveAll = function onRemoveAll() {
 };
 
 var onMakeDecision = function onMakeDecision() {
-  var randomNum = Math.random() * object.options.length;
-  console.log(randomNum);
+  var randomNum = Math.floor(Math.random() * object.options.length);
+  var optionz = object.options[randomNum];
+  alert(optionz);
 };
-var appRoot = document.getElementById('app');
 
-var numbers = [55, 101, 1000];
+var appRoot = document.getElementById('app');
 
 var render = function render() {
   var template = React.createElement(
@@ -39,7 +39,7 @@ var render = function render() {
       null,
       ' ',
       object.title,
-      '  '
+      ' '
     ),
     object.subtitle && React.createElement(
       'p',
@@ -56,7 +56,7 @@ var render = function render() {
     ),
     React.createElement(
       'button',
-      { onClick: onMakeDecision },
+      { disabled: object.options.length === 0, onClick: onMakeDecision },
       'What do?'
     ),
     React.createElement(
@@ -64,15 +64,6 @@ var render = function render() {
       { onClick: onRemoveAll },
       ' Remove All '
     ),
-    numbers.map(function (number) {
-      return React.createElement(
-        'p',
-        { key: number },
-        ' Number : ',
-        number,
-        ' '
-      );
-    }),
     React.createElement(
       'ol',
       null,
