@@ -1,4 +1,4 @@
-let count = 0;
+/*let count = 0;
 
 const addOne = () => {
   count++;
@@ -15,14 +15,7 @@ const reset = () => {
   renderCounterApp();
 }
 
-
-
-
-
-
 var appRoot = document.getElementById('app');
-
-
 
 const renderCounterApp = () => {
   const templateTwo = (
@@ -36,4 +29,55 @@ const renderCounterApp = () => {
   ReactDOM.render(templateTwo, appRoot);
 }
 
-renderCounterApp();
+renderCounterApp();*/
+
+
+
+
+class Counter extends React.Component{
+  render(){
+    return (
+      <div>
+        <h1> Count:</h1>
+        <button onClick = {}>Add</button>
+        <button onClick = {}>Minus</button>
+        <button onClick = {}>Reset</button>
+        </div>
+    );
+  }
+
+}
+  ReactDOM.render(<Counter/>, document.getElementById('app'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
