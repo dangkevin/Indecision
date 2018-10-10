@@ -68,10 +68,18 @@ constructor(props){
         count: 0
       };
     });
+
+  /*This line here takes the 
+  previous state of the previous function
+  and then re-renders after the top one is called.
+  Hence it updates to 0, then it increments +1. */
+  this.setState((prevState) => {
+    return {
+      count: prevState.count + 1
+    };
+    });
   }
-
-
-  render(){
+    render(){
     return (
       <div>
         <h1> Count: {this.state.count}</h1>
