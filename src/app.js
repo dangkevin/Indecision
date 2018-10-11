@@ -20,10 +20,16 @@ const getName = obj.getName.bind({name: 'Andrew'});
 
 
 class IndecisionApp extends React.Component {
+  
   constructor(props){
     super(props);
-   this.state = {
+    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    this.handlePick = this.handlePick.bind(this);
+    this.handleAddOption = this.handleAddOption.bind(this);
+    this.state = {
+       
      options: ['Thing one', 'Thing two', 'Thing']
+
     };
   }
 
@@ -34,18 +40,29 @@ class IndecisionApp extends React.Component {
       };
     });
   }
+  handleAddOption(option){
+    console.log(option);
+  }
+
+  handlePick(){
+    const randomNum = Math.floor(Math.random() * this.state.options.length);
+    const optionz = this.state.options[randomNum];
+    alert(optionz);
+  }
   
   render() {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hands of a computer';
-
-
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
-        <Action hasOptions = {this.state.options.length > 0}/>
+        
+        <Action hasOptions = {this.state.options.length > 0}
+                handlePick = {this.handlePick}/>
+
         <Options options={this.state.options}
         handleDeleteOptions = {this.handleDeleteOptions} />
+
         <AddOption />
       </div>
     );
@@ -64,13 +81,10 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-  handlePick(){
-    alert('handlePick');
-  }
   render() {
     return (
       <div>
-        <button onClick = {this.handlePick}
+        <button onClick = {this.props.handlePick}
         disabled = {!this.props.hasOptions}
         >
         What should I do?</button>
@@ -79,10 +93,8 @@ class Action extends React.Component {
   }
 }
 
-//since 
 
 class Options extends React.Component {
-  
   render() {
     return (
       <div>
