@@ -41,7 +41,7 @@ constructor(props){
   this.minusOne = this.minusOne.bind(this);
   this.reset = this.reset.bind(this);
   this.state = {
-    count:0
+    count: 0
   };
 }
 
@@ -62,6 +62,7 @@ constructor(props){
     });
   }
 
+
   reset(){
     this.setState(() => {
       return {
@@ -79,6 +80,8 @@ constructor(props){
     };
     });
   }
+
+
     render(){
     return (
       <div>

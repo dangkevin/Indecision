@@ -21,7 +21,7 @@ var IndecisionApp = function (_React$Component) {
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
     _this.state = {
-      options: []
+      options: props.options
     };
     return _this;
   }
@@ -60,7 +60,6 @@ var IndecisionApp = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var title = 'Indecision';
       var subtitle = 'Put your life in the hands of a computer';
 
       return (
@@ -68,7 +67,7 @@ var IndecisionApp = function (_React$Component) {
         React.createElement(
           'div',
           null,
-          React.createElement(Header, { title: title, subtitle: subtitle }),
+          React.createElement(Header, { subtitle: subtitle }),
           React.createElement(Action, {
             hasOptions: this.state.options.length > 0,
             handlePick: this.handlePick
@@ -108,12 +107,16 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subtitle && React.createElement(
       'h2',
       null,
       props.subtitle
     )
   );
+};
+
+Header.defaultProps = {
+  title: 'Some Default'
 };
 
 /* This is a React Class Component
@@ -132,6 +135,9 @@ var Header = function Header(props) {
     );
   }
 } */
+IndecisionApp.defaultProps = {
+  options: []
+};
 
 /* React stateless component for Action */
 var Action = function Action(props) {
