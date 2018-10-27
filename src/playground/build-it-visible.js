@@ -1,53 +1,33 @@
-
-  
-  
-  
-  //*Parent Class Component**/
-  class VisibilityToggle extends React.Component{
-    constructor(props){
-      super(props);
-      this.click = this.click.bind(this);
-      //Sets the state to be false
-      this.state = {
-        visibility: false
+class VisibilityToggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggleVisibility = this.handleToggleVisibility.bind(this);
+    this.state = {
+      visibility: false
+    };
+  }
+  handleToggleVisibility() {
+    this.setState((prevState) => {
+      return {
+        visibility: !prevState.visibility
       };
-    }
-
-    /** On click function
-     * The function state is now set to true 
-     * */
-
-    click(){
-      this.setState((prevState) => {
-        return{
-          visibility:!prevState.visibility
-        };
-      });
-    }
-
-    /** Returns the template
-     * 
-     */
-    render(){
-      return(
-        <div>
-          <h1>Visibility Toggle</h1> 
-          <button onClick = {this.click}> {this.state.visibility ? 'Hide Details' : 'Show Details'}</button>
-          <p hidden = {!this.state.visibility}> Hello!</p>
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h1>Visibility Toggle</h1>
+        <button onClick={this.handleToggleVisibility}>
+          {this.state.visibility ? 'Hide details' : 'Show details'}
+        </button>
+        {this.state.visibility && (
+          <div>
+            <p>Hey. These are some details you can now see!</p>
           </div>
-        );
-      } 
-    }
+        )}
+      </div>
+    );
+  }
+}
 
-    ReactDOM.render(<VisibilityToggle/>, document.getElementById('app'));
-
-
-
-
-
-
-
-
-
-  
-  
+ReactDOM.render(<VisibilityToggle />, document.getElementById('app'));

@@ -1,25 +1,22 @@
 var nameVar = 'Andrew';
 var nameVar = 'Mike';
-console.log('nameVar',nameVar);
+console.log('nameVar', nameVar);
 
 let nameLet = 'Jen';
-
 nameLet = 'Julie';
 console.log('nameLet', nameLet);
 
 const nameConst = 'Frank';
-
-/*does not work cause of const*/
-const nameConst = 'Gunther';
 console.log('nameConst', nameConst);
 
+// Block scoping
 
-// Block Scoping
+const fullName = 'Jen Mead';
+let firstName;
 
-var fullName = 'Andrew Mead';
-
-if(fullName){
-    var firstName = fullName.split(' ')[0];
-    console.log(firstName);
-    
+if (fullName) {
+  firstName = fullName.split(' ')[0];
+  console.log(firstName);
 }
+
+console.log(firstName);

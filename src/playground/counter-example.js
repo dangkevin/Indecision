@@ -1,129 +1,57 @@
-/*let count = 0;
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAddOne = this.handleAddOne.bind(this);
+    this.handleMinusOne = this.handleMinusOne.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.state = {
+      count: 0
+    };
+  }
+  componentDidMount() {
+    const stringCount = localStorage.getItem('count');
+    const count = parseInt(stringCount, 10);
 
-const addOne = () => {
-  count++;
-  renderCounterApp();
-};
-
-const minusOne = () => {
-  count--;
-  renderCounterApp();
-}
-
-const reset = () => {
-  count = 0;
-  renderCounterApp();
-}
-
-var appRoot = document.getElementById('app');
-
-const renderCounterApp = () => {
-  const templateTwo = (
-    <div>
-      <h1>Count :{count} </h1>
-      <button onClick = {addOne}> +1 </button>
-      <button onClick = {minusOne}>-1</button>
-      <button onClick = {reset}>Reset</button>
-    </div>
-  );
-  ReactDOM.render(templateTwo, appRoot);
-}
-
-renderCounterApp();*/
-
-
-
-
-class Counter extends React.Component{
-constructor(props){
-  super(props);
-  this.addOne = this.addOne.bind(this);
-  this.minusOne = this.minusOne.bind(this);
-  this.reset = this.reset.bind(this);
-  this.state = {
-    count: 0
-  };
-}
-
-
-  addOne(){
+    if (!isNaN(count)) {
+      this.setState(() => ({ count }));
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      localStorage.setItem('count', this.state.count);
+    }
+  }
+  handleAddOne() {
     this.setState((prevState) => {
-      return{
+      return {
         count: prevState.count + 1
       };
     });
   }
-
-  minusOne(){
+  handleMinusOne() {
     this.setState((prevState) => {
-      return{
+      return {
         count: prevState.count - 1
       };
     });
   }
-
-
-  reset(){
+  handleReset() {
     this.setState(() => {
       return {
         count: 0
       };
     });
-
-  /*This line here takes the 
-  previous state of the previous function
-  and then re-renders after the top one is called.
-  Hence it updates to 0, then it increments +1. */
-  this.setState((prevState) => {
-    return {
-      count: prevState.count + 1
-    };
-    });
   }
-
-
-    render(){
+  render() {
     return (
       <div>
-        <h1> Count: {this.state.count}</h1>
-        <button onClick = {this.addOne}>Add</button>
-        <button onClick = {this.minusOne}>Minus</button>
-        <button onClick = {this.reset}>Reset</button>
-        </div>
+        <h1>Count: {this.state.count}</h1>
+        <button onClick={this.handleAddOne}>+1</button>
+        <button onClick={this.handleMinusOne}>-1</button>
+        <button onClick={this.handleReset}>reset</button>
+      </div>
     );
   }
 }
-  ReactDOM.render(<Counter/>, document.getElementById('app'));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ReactDOM.render(<Counter />, document.getElementById('app'));
