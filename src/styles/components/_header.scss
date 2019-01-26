@@ -1,25 +1,28 @@
-.header {
-  background: $color1;
-  margin-bottom: $l-size + 0.5;
-  padding: $m-size + 0.2 0;
-  color: $white;
-  text-align: center;
+.header{
+    background: $off-black; 
+    margin-bottom: $xl-size;
+    padding: $m-size 0;
+    color: white;
 }
 
-.header__title {
-  font-size: $l-size;
-  padding: $sm-size 0;
-  margin-bottom: 0rem;
+
+//BEM naming convention
+.header__title{
+    font-size: $l-size;
+    margin: 0;
 }
 
-.header__subtitle {
-  font-size: $m-size + 0.15;
-  margin-bottom: 0rem;
-  color: $off-white;
+.header__subtitle{
+    color: $off-white;
+    margin: 0;
+    font-weight: 500;
+    font-size: $m-size;
+
 }
 
-@media (max-width: $desktop-breakpoint) {
-  .header {
-    margin-bottom: $m-size + 0.5;
-  }
+
+@media (min-width:$desktop-breakpoint){
+    .header{
+        margin-bottom: $xl-size;
+    }
 }
