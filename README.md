@@ -4,5 +4,6 @@
 
 
 
-![Image description](https://github.com/dangkevin/Indecision/blob/master/Indecision-1.png)
+![Landing Screen](https://github.com/dangkevin/Indecision/blob/master/Indecision-1.png)
 
+![Option decided](https://github.com/dangkevin/Indecision/blob/master/Indecision-2.png)
